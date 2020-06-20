@@ -1,0 +1,22 @@
+{% extends 'users_app/parent.html' %}
+{% load static %}
+
+{% block content_block %}
+<div class="jumbotron">
+  {% if registered %}
+  <h1>Thanks for Registering!</h1>
+  {% else %}
+  <h1>Register Here</h1>
+  <h2>Fill out the form</h2>
+  <form enctype="multipart/form-data" method="POST">
+    {% csrf_token %}
+    {{ user1.as_p }}
+    {{ profile1.as_p }}
+    <!-- without the formmethod attribute, the method in the opening tag will always get overridden! -->
+    <input type="submit" formmethod="POST" name="" value="Register">
+
+  </form>
+  {% endif %}
+
+</div>
+{% endblock %}
